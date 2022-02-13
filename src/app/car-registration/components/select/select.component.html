@@ -1,0 +1,29 @@
+<div class="input" (click)="openDropdown($event)">
+    <div class="value">
+
+    
+    <ng-container *ngIf="!value || !value?.length ">
+        {{placeholder}}
+    </ng-container>
+    <ng-container *ngIf="multiple">
+        <span class="chip" *ngFor="let val of value">
+           {{val}}
+
+        </span>
+    </ng-container>
+    <ng-container *ngIf="!multiple">
+            {{value[0]}}
+    </ng-container>
+</div>
+</div>
+<div class="overlay active" *ngIf="isDropDownVisible === true" (click)="closeDropdown()"></div>
+<div class="dropdown active" *ngIf="isDropDownVisible" [style.top.px]="getTop" [style.left.px]="getLeft"
+    [style.min-width.px]="getWidth" [style.max-width.px]="maxWidth"  #optionList>
+    <div class="input-group">
+        <input type="text" placeholder="'Search...'" [(ngModel)]="searchKey" />
+    </div>
+    <div #ref><ng-content ></ng-content></div>
+    <span *ngIf="!ref.children.length">
+       <small>Nothing Found!!!</small>
+     </span>`
+</div>

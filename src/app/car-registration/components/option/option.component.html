@@ -1,0 +1,11 @@
+<li>
+    <label class="multi-select">
+        <!-- [checked]="select.value.includes(value)" -->
+      <input type="checkbox"   tabindex="0" [value]="value" [checked]="select.value.includes(value)"  (change)="change($event)" />
+      <span class="checkbox" *ngIf="select.multiple"></span>
+      <span class="value" #options>
+        <ng-content> </ng-content>
+      </span>
+    </label>
+  </li>
+  

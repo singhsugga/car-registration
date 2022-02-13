@@ -1,0 +1,105 @@
+li {
+    width: 100%;
+    display: block;
+    margin-bottom: 0px;
+    padding: 0;
+    height: auto;
+  
+    label {
+      line-height: 23px;
+      font-size: 13px;
+      font-weight: 400;
+      border-radius: 4px;
+      display: flex;
+      position: relative;
+      margin: 0;
+      align-items: center;
+    //   width:100%;
+      input[type='checkbox'] {
+        position: absolute;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+        pointer-events: none;
+  
+        &:checked,
+        &:hover {
+          & + span {
+            background: #dcdcdc;
+          }
+        }
+      }
+  
+      span {
+        &.value {
+          color: #161b2f;
+          font-size: 12px;
+          line-height: 20px;
+          font-weight: 400;
+          max-width: 100%;
+          white-space: nowrap;
+          overflow: hidden;
+          display: block;
+          text-overflow: ellipsis;
+          padding: 4px 8px;
+          width: 100%;
+          text-transform: none;
+          cursor: pointer;
+          text-align: left;
+        }
+      }
+  
+      &.multi-select {
+        padding: 0 8px;
+        span.checkbox {
+          display: inline-block;
+          border: 1px solid #dbdbdb;
+          border-radius: 2px;
+          height: 16px;
+          width: 16px;
+          position: relative;
+          padding: 2px;
+        }
+      }
+  
+      input[type='checkbox'] {
+        position: absolute;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+        opacity: 0;
+        cursor: pointer;
+  
+        &:checked {
+          & + span {
+            &.checkbox {
+              border-color: #34aa44;
+              background: #34aa44;
+  
+              &:after {
+                width: 12px;
+                height: 3px;
+                border-bottom: 2px solid #ffffff;
+                border-left: 2px solid #ffffff;
+                transform: rotate(-45deg);
+                content: '';
+                position: absolute;
+                top: 5px;
+                left: 2px;
+              }
+            }
+  
+            background: #dcdcdc;
+          }
+        }
+      }
+    }
+    &:hover {
+      label {
+        background: #f1f1f1;
+      }
+    }
+  }
+  

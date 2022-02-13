@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="child">
+   
+
+		<div class="form-car">
+			<h1>Register Car</h1>
+			<form [formGroup]="carForm" novalidate (ngSubmit)="saveCar(carForm)">
+				<input type="text" class="input-field"   formControlName="name" placeholder="Enter car name" />
+				<small class="error-msg"  *ngIf="carForm.get('name')?.hasError('required') && carForm.get('name')?.touched">Full Name is required.</small>
+				<small class="error-msg" *ngIf="carForm.get('name')?.hasError('maxlength') && carForm.get('name')?.touched">Maximum allowed name should be 75 characters.</small>
+				<small class="error-msg" *ngIf="carForm.get('name')?.hasError('pattern') && carForm.get('name')?.touched">A-Z characters are allowed.</small>
+				<app-select class="select" [multiple]="false" #model formControlName="model" [placeholder]="'Select car model'">
+					<app-option [value]="option" *ngFor="let option of carList | search: model.searchKey">{{option}}</app-option>
+				</app-select>
+				<app-select [multiple]="true" #parts formControlName="parts"  [placeholder]="'Select auto parts (multiple parts can be selected)'">
+					<app-option [value]="option" *ngFor="let option of partsList | search: parts.searchKey">{{option}}</app-option>
+				</app-select>
+		
+				<input type="color" class="input-field-color"  formControlName="color" placeholder="color"/>
+			<input type="submit" value="Submit" [class.disabled]="carForm.invalid"/>
+			</form>
+			</div>
+    </div>
+
+
+
+   
+    <div class="child" *ngIf="previewMessage">
+		<h1 >Summary</h1>
+        <div [innerHTML]="previewMessage|sanitizeHtml"></div>
+    </div>
+</div>
